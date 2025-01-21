@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,7 +21,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "actor")
-public class Actor extends BaseModel {
+public class Actor extends BaseModel implements UserDetails {
     @Column(name = "first_name", nullable = false)
     String firstname;
 
@@ -38,4 +42,14 @@ public class Actor extends BaseModel {
     )
     @Builder.Default
     Set<Role> roles = new HashSet<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 }

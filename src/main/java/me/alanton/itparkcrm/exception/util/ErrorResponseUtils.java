@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ErrorResponseUtil {
+public class ErrorResponseUtils {
     public static ErrorResponse build(
             final String code,
             final String message,

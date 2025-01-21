@@ -3,7 +3,6 @@ package me.alanton.itparkcrm.config;
 import lombok.RequiredArgsConstructor;
 import me.alanton.itparkcrm.security.JwtAuthenticationFilter;
 import me.alanton.itparkcrm.service.ActorService;
-import me.alanton.itparkcrm.service.impl.ActorServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

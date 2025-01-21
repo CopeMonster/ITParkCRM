@@ -4,7 +4,7 @@ import me.alanton.itparkcrm.exception.impl.ApplicationException;
 import me.alanton.itparkcrm.exception.impl.BusinessException;
 import me.alanton.itparkcrm.exception.response.ErrorResponse;
 import me.alanton.itparkcrm.exception.response.InvalidParameterResponse;
-import me.alanton.itparkcrm.exception.util.ErrorResponseUtil;
+import me.alanton.itparkcrm.exception.util.ErrorResponseUtils;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             final Exception ex,
             final ServletWebRequest request
     ) {
-        final ErrorResponse errorResponse = ErrorResponseUtil.build(
+        final ErrorResponse errorResponse = ErrorResponseUtils.build(
                 ex.getClass().getSimpleName(),
                 HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
                 HttpStatus.INTERNAL_SERVER_ERROR
@@ -42,7 +42,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             final BusinessException ex,
             final ServletWebRequest request
     ) {
-        final ErrorResponse errorResponse = ErrorResponseUtil.build(
+        final ErrorResponse errorResponse = ErrorResponseUtils.build(
                 ex.getCode(),
                 ex.getMessage(),
                 ex.getHttpStatus()
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             final ApplicationException ex,
             final ServletWebRequest request
     ) {
-        final ErrorResponse errorResponse = ErrorResponseUtil.build(
+        final ErrorResponse errorResponse = ErrorResponseUtils.build(
                 ex.getCode(),
                 ex.getMessage(),
                 HttpStatus.INTERNAL_SERVER_ERROR
@@ -75,7 +75,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                 .build())
                         .toList();
 
-        final ErrorResponse errorResponse = ErrorResponseUtil.build(
+        final ErrorResponse errorResponse = ErrorResponseUtils.build(
                 ex.getClass().getSimpleName(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 HttpStatus.BAD_REQUEST,
