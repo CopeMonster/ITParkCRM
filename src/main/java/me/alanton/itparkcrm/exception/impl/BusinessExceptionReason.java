@@ -10,7 +10,8 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public enum BusinessExceptionReason {
-    ROLE_NOT_FOUND_EXCEPTION("Role not found", HttpStatus.NOT_FOUND);
+    ROLE_NOT_FOUND_EXCEPTION("Role not found", HttpStatus.NOT_FOUND),
+    ACTOR_NOT_FOUND_EXCEPTION("Actor not found", HttpStatus.NOT_FOUND);
 
     final String code = BusinessExceptionReason.class.getSimpleName();
     final String message;

@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import me.alanton.itparkcrm.entity.Actor;
+import me.alanton.itparkcrm.entity.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtUtils {
@@ -39,7 +41,9 @@ public class JwtUtils {
         if (userDetails instanceof Actor customUserDetails) {
             claims.put("id", customUserDetails.getId());
             claims.put("email", customUserDetails.getEmail());
-            claims.put("roles", customUserDetails.getAuthorities());
+            claims.put("roles", customUserDetails.getRoles().stream()
+                    .map(Role::getName)
+                    .collect(Collectors.toSet()));
         }
 
         return generateAccessToken(claims, userDetails);

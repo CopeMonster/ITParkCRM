@@ -34,7 +34,7 @@ public class Actor extends BaseModel implements UserDetails {
     @Column(name = "password", nullable = false)
     String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "actor_role",
             joinColumns = @JoinColumn(name = "actor_id"),
