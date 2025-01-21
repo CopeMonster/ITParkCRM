@@ -1,14 +1,19 @@
 package me.alanton.itparkcrm.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import me.alanton.itparkcrm.dto.request.RoleRequest;
 import me.alanton.itparkcrm.dto.response.RoleResponse;
+import me.alanton.itparkcrm.repository.RoleRepository;
 import me.alanton.itparkcrm.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+
 @Service
 public class RoleServiceImpl implements RoleService {
+    private final RoleRepository roleRepository;
 
     @Override
     public RoleResponse getRoleByName(String name) {
