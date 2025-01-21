@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -35,5 +36,6 @@ public class Actor extends BaseModel {
             joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    Set<Role> roles;
+    @Builder.Default
+    Set<Role> roles = new HashSet<>();
 }

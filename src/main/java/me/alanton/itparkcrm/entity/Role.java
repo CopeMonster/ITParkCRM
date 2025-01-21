@@ -8,6 +8,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -24,5 +25,6 @@ public class Role extends BaseModel {
     String name;
 
     @ManyToMany(mappedBy = "roles")
-    Set<Actor> actors;
+    @Builder.Default
+    Set<Actor> actors = new HashSet<>();
 }
