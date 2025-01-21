@@ -8,6 +8,5 @@ import java.util.UUID;
 
 public interface ActorRepository extends JpaRepository<Actor, UUID> {
     Optional<Actor> findByEmail(String email);
-
     boolean existsByEmail(String email);
 }
