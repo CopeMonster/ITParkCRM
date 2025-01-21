@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: SDU IT Park CRM
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/sdu_it_park_crm
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

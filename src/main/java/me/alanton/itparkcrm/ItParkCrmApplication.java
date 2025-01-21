@@ -1,5 +1,6 @@
 package me.alanton.itparkcrm;
 
+import me.alanton.itparkcrm.entity.Actor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
